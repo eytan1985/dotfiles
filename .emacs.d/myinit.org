@@ -1,0 +1,144 @@
+
+
+;; Code block within org mode
+;; Tab does not work in this mode, so we can use C-c ' to open the block in an external editor.
+;; If C-c ' not working do: M-x install-package org-mode 
+
+
+* interface tweaks
+  #+BEGIN_SRC emacs-lisp
+    ;; remove startup window when opening up emacs
+    (setq inhibit-startup-message t)
+
+    ;; remove tool bar from emacs window
+    (tool-bar-mode -1)
+
+    ;; change the default syntax for approval qustions
+    (fset 'yes-or-no-p 'y-or-n-p)
+
+    ;; reload buffer key binding to F5 
+    (global-set-key (kbd "<f5>") 'revert-buffer)
+  #+END_SRC
+* try
+  'try' - let's try packages without installing them
+  Usage: M-x try [package-name]
+  To Try: M-x [package-name]
+
+  Example:
+  M-x try 2048-game
+  M-x 2048-game
+  #+BEGIN_SRC emacs-lisp
+    (use-package try
+      :ensure t) ;; ensure it's install
+  #+END_SRC
+* which-key
+  'which-key' - display keys and there descriptions
+
+  Example:
+  Press C-x and wait... at the bottom there will be a list of available options
+  #+BEGIN_SRC emacs-lisp
+    (use-package which-key
+      :ensure t
+      :config (which-key-mode))
+  #+END_SRC
+* Org-Mode Stuff
+  #+BEGIN_SRC emacs-lisp
+    (use-package org-bullets
+      :ensure t
+      :config
+      (add-hook 'org-mode-hook (lambda () (org-bullets-mode))))
+  #+END_SRC
+
+* ido mode
+  #+BEGIN_SRC emacs-lisp
+    (setq ido-enable-flex-matching t)
+    (setq ido-everywhere t)
+    (ido-mode 1)
+  #+END_SRC
+
+* Aliases
+  #+BEGIN_SRC emacs-lisp
+    (defalias 'list-buffers 'ibuffer)  
+  #+END_SRC
+
+* ace-window
+  ace-window - package to move around emacs windows
+  #+BEGIN_SRC emacs-lisp 
+    (use-package ace-window
+      :ensure t
+      :init
+      (progn
+	;; use ace-window whenever pressing C-o
+	(global-set-key [remap other-window] 'ace-window) 
+	;; set bigger font size to the windows numbers
+	(custom-set-faces
+	 '(aw-leading-char-face
+	   ((t (:inherit ace-jump-face-foreground :height 3.0)))))
+	))
+  #+END_SRC
+
+* Auto Complete
+  #+BEGIN_SRC emacs-lisp 
+    (use-package auto-complete
+      :ensure t
+      :init
+      (progn
+	(ac-config-default)
+	(global-auto-complete-mode t)
+	))
+  #+END_SRC 
+* Appearance
+** Themes
+   #+BEGIN_SRC emacs-lisp
+     (load-theme 'tango-dark t)   
+   #+END_SRC
+** Frame Font
+   The Emacs frame font
+   #+BEGIN_SRC emacs-lisp
+     (set-frame-font "Inconsolata 30" nil t)
+   #+END_SRC
+* Flycheck
+  Syntax Checking For GNU Emacs
+  #+BEGIN_SRC emacs-lisp
+    (use-package flycheck
+      :ensure t
+      :init
+      (global-flycheck-mode t))
+  #+END_SRC
+* Python
+  #+BEGIN_SRC emacs-lisp
+    (use-package jedi
+      :ensure t
+      :init
+      (add-hook 'python-mode-hook 'jedi:setup)
+      (add-hook 'python-mode-hook 'jedi:ac-setup))
+
+    (use-package elpy
+      :ensure t
+      :config
+      (elpy-enable))
+  #+END_SRC
+* Yasnippet
+  Code snippets for Emacs\\
+  [[https://github.com/joaotavora/yasnippet][yasnippet]]
+  #+BEGIN_SRC emacs-lisp
+    (use-package yasnippet
+      :ensure t
+      :init
+      (yas-global-mode 1))
+  #+END_SRC
+* Evil_Mode
+  Evil is an extensible vi layer for Emacs.
+  #+BEGIN_SRC emacs-lisp
+    (use-package evil
+      :ensure t
+      :init
+      (evil-mode 1))
+  #+END_SRC
+* Org-evil
+  Org-evil provides Org-mode extensions for Evil users\\
+  [[https://github.com/GuiltyDolphin/org-evil][Org-evil]]
+  #+BEGIN_SRC emacs-lisp
+    (use-package org-evil
+      :ensure t)
+  #+END_SRC
