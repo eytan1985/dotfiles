@@ -24,7 +24,7 @@
   #+END_SRC
 * try
   'try' - let's try packages without installing them\\
-  Usage: M-x try [package-name]\\
+  Usage: M-x try [package-name]\\\
   To Try: M-x [package-name]\\
 
   Example:\\
@@ -144,7 +144,7 @@
       (evil-mode 1))
   #+END_SRC
 ** Evil Collection
-   Keybindings collection for evil-mode
+   Keybindings collection for evil-mode\\
    [[https://github.com/emacs-evil/evil-collection][evil-collection]]
    #+BEGIN_SRC emacs-lisp
      (use-package evil-collection
