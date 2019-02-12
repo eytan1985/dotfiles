@@ -1,4 +1,3 @@
-#+OPTIONS: \n:t
 
 ;; Code block within org mode
 ;; Tab does not work in this mode, so we can use C-c ' to open the block in an external editor.
@@ -24,9 +23,6 @@
   #+END_SRC
 * try
   'try' - let's try packages without installing them\\
-  Usage: M-x try [package-name]
-  To Try: M-x [package-name]
-
   Example:\\
   M-x try 2048-game \
   M-x 2048-game
