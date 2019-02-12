@@ -92,6 +92,7 @@ xinput --set-prop $(xinput | grep 'DELL.*Touchpad' | awk '{print $6}' | sed 's/i
 alias ..='cd ..'
 alias ...='cd ../..'
 alias cls='clear && ls'
+alias c='clear'
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'
 
 ## delete files

@@ -18,23 +18,26 @@
 
     ;; reload buffer key binding to F5 
     (global-set-key (kbd "<f5>") 'revert-buffer)
+
+    ;; toggle truncate long lines key binding
+    (global-set-key (kbd "C-c l") 'toggle-truncate-lines)
   #+END_SRC
 * try
-  'try' - let's try packages without installing them
-  Usage: M-x try [package-name]
-  To Try: M-x [package-name]
+  'try' - let's try packages without installing them\\
+  Usage: M-x try [package-name]\\
+  To Try: M-x [package-name]\\
 
-  Example:
-  M-x try 2048-game
+  Example:\\
+  M-x try 2048-game\\
   M-x 2048-game
   #+BEGIN_SRC emacs-lisp
     (use-package try
-      :ensure t) ;; ensure it's install
+      :ensure t) 
   #+END_SRC
 * which-key
   'which-key' - display keys and there descriptions
 
-  Example:
+  Example:\\
   Press C-x and wait... at the bottom there will be a list of available options
   #+BEGIN_SRC emacs-lisp
     (use-package which-key
@@ -47,20 +50,18 @@
       :ensure t
       :config
       (add-hook 'org-mode-hook (lambda () (org-bullets-mode))))
+      (setq org-log-done t)
   #+END_SRC
-
 * ido mode
   #+BEGIN_SRC emacs-lisp
     (setq ido-enable-flex-matching t)
     (setq ido-everywhere t)
     (ido-mode 1)
   #+END_SRC
-
 * Aliases
   #+BEGIN_SRC emacs-lisp
     (defalias 'list-buffers 'ibuffer)  
   #+END_SRC
-
 * ace-window
   ace-window - package to move around emacs windows
   #+BEGIN_SRC emacs-lisp 
@@ -76,7 +77,6 @@
 	   ((t (:inherit ace-jump-face-foreground :height 3.0)))))
 	))
   #+END_SRC
-
 * Auto Complete
   #+BEGIN_SRC emacs-lisp 
     (use-package auto-complete
@@ -96,6 +96,11 @@
    The Emacs frame font
    #+BEGIN_SRC emacs-lisp
      (set-frame-font "Inconsolata 30" nil t)
+   #+END_SRC
+** Fonts and Icons
+   #+BEGIN_SRC emacs-lisp
+     (use-package all-the-icons
+       :ensure t)
    #+END_SRC
 * Flycheck
   Syntax Checking For GNU Emacs
@@ -133,12 +138,44 @@
     (use-package evil
       :ensure t
       :init
+      (setq evil-want-integration t)
+      (setq evil-want-keybinding nil)
+      :config
       (evil-mode 1))
   #+END_SRC
+** Evil Collection
+   Keybindings collection for evil-mode
+   [[https://github.com/emacs-evil/evil-collection][evil-collection]]
+   #+BEGIN_SRC emacs-lisp
+     (use-package evil-collection
+       :after evil
+       :ensure t
+       :config
+       (evil-collection-init))
+   #+END_SRC
 * Org-evil
   Org-evil provides Org-mode extensions for Evil users\\
   [[https://github.com/GuiltyDolphin/org-evil][Org-evil]]
   #+BEGIN_SRC emacs-lisp
     (use-package org-evil
       :ensure t)
+  #+END_SRC
+* Neotree
+  A Emacs tree file navigator\\
+  [[https://github.com/jaypei/emacs-neotree][neotree]]
+  #+BEGIN_SRC emacs-lisp
+    (use-package neotree
+      :ensure t
+      :config
+      (global-set-key (kbd "<f8>") 'neotree-toggle)
+      (setq neo-theme 'nerd))
+  #+END_SRC
+* Assembly
+  nasm0mode is a major mode for editing NASM x86 assembly programs\\
+  [[https://github.com/skeeto/nasm-mode][nasm-mode]]
+  #+BEGIN_SRC emacs-lisp
+    (use-package nasm-mode
+      :ensure t
+      :config
+      (add-hook 'asm-mode-hook 'nasm-mode))
   #+END_SRC
