@@ -1,4 +1,4 @@
-
+#+OPTIONS: \n:t
 
 ;; Code block within org mode
 ;; Tab does not work in this mode, so we can use C-c ' to open the block in an external editor.
