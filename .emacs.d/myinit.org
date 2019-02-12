@@ -22,19 +22,13 @@
     (global-set-key (kbd "C-c l") 'toggle-truncate-lines)
   #+END_SRC
 * try
-  'try' - let's try packages without installing them\\
-  Example:\\
-  M-x try 2048-game \
-  M-x 2048-game
+  let's try packages without installing them
   #+BEGIN_SRC emacs-lisp
     (use-package try
       :ensure t) 
   #+END_SRC
 * which-key
-  'which-key' - display keys and there descriptions
-
-  Example:\\
-  Press C-x and wait... at the bottom there will be a list of available options
+  display keys and there descriptions
   #+BEGIN_SRC emacs-lisp
     (use-package which-key
       :ensure t
@@ -59,7 +53,7 @@
     (defalias 'list-buffers 'ibuffer)  
   #+END_SRC
 * ace-window
-  ace-window - package to move around emacs windows
+  package to move around emacs windows
   #+BEGIN_SRC emacs-lisp 
     (use-package ace-window
       :ensure t
@@ -167,7 +161,7 @@
       (setq neo-theme 'nerd))
   #+END_SRC
 * Assembly
-  nasm0mode is a major mode for editing NASM x86 assembly programs\\
+  nasm-mode is a major mode for editing NASM x86 assembly programs\\
   [[https://github.com/skeeto/nasm-mode][nasm-mode]]
   #+BEGIN_SRC emacs-lisp
     (use-package nasm-mode
