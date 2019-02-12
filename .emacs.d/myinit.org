@@ -24,11 +24,11 @@
   #+END_SRC
 * try
   'try' - let's try packages without installing them\\
-  Usage: M-x try [package-name]\\\
-  To Try: M-x [package-name]\\
+  Usage: M-x try [package-name]
+  To Try: M-x [package-name]
 
   Example:\\
-  M-x try 2048-game\\
+  M-x try 2048-game \\
   M-x 2048-game
   #+BEGIN_SRC emacs-lisp
     (use-package try
