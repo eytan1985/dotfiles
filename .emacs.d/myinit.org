@@ -163,3 +163,13 @@
       :config
       (add-hook 'asm-mode-hook 'nasm-mode))
   #+END_SRC
+* Projectile
+  Projectile is a project interaction library for Emacs\\
+  [[https://github.com/bbatsov/projectile][projectile]]
+  #+BEGIN_SRC emacs-lisp
+    (use-package projectile
+      :ensure t
+      :config
+      (projectile-global-mode)
+      (setq projectile-completion-system 'ivy))
+  #+END_SRC

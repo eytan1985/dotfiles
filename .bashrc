@@ -13,6 +13,9 @@ if [ -d "$HOME/.bin" ] ;
 	then PATH="$HOME/.bin:$PATH"
 fi
 
+## add my scripts to path
+export PATH=~/progs/scripts:$PATH
+
 ## list
 alias ls='ls --color=auto'
 alias la='ls -a'
@@ -98,6 +101,8 @@ alias config='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'
 ## delete files
 alias rm='rm -i'
 
+## i3 configuration
+alias i3conf='vim ~/.config/i3/config'
 
 #shopt
 shopt -s autocd # change to named directory
