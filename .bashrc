@@ -6,6 +6,7 @@
 [[ $- != *i* ]] && return
 
 export HISTCONTROL=ignoreboth:erasedups
+export VISUAL=emacs
 
 PS1='[\u@\h \W]\$ '
 

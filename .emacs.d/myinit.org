@@ -120,7 +120,7 @@
 ** Frame Font
    The Emacs frame font
    #+BEGIN_SRC emacs-lisp
-     (set-frame-font "Inconsolata 30" nil t)
+     (set-frame-font "Inconsolata 10" nil t)
    #+END_SRC
 ** Fonts and Icons
    #+BEGIN_SRC emacs-lisp
