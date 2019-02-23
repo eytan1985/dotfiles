@@ -9,11 +9,14 @@
     ;; change the default syntax for approval qustions
     (fset 'yes-or-no-p 'y-or-n-p)
 
-    ;; reload buffer key binding to F5 
-    (global-set-key (kbd "<f5>") 'revert-buffer)
+    ;; reload buffer key binding to F6 
+    (global-set-key (kbd "<f6>") 'revert-buffer)
 
     ;; toggle truncate long lines key binding
     (global-set-key (kbd "C-c l") 'toggle-truncate-lines)
+
+    ;; compile key binding to F5
+    (global-set-key (kbd "<f5>") 'compile)
   #+END_SRC
 * try
   let's try packages without installing them
@@ -35,6 +38,44 @@
       :config
       (add-hook 'org-mode-hook (lambda () (org-bullets-mode))))
       (setq org-log-done t)
+  #+END_SRC
+* Swiper/Ivy/Counsel
+  Swiper gives a really efficient incremental search with regular expressions
+  and Ivy / Counsel replace a lot of ido or helms completion functionality
+  #+BEGIN_SRC emacs-lisp
+    (use-package counsel
+      :ensure t
+      :bind
+      (("M-y" . counsel-yank-pop)
+       :map ivy-minibuffer-map
+       ("M-y" . ivy-next-line)))
+
+
+    (use-package ivy
+      :ensure t
+      :diminish (ivy-mode)
+      :bind
+      (("C-x b" . ivy-switch-buffer))
+      :config
+      (ivy-mode 1)
+      (setq ivy-use-virtual-buffers t)
+      (setq ivy-count-format "%d/%d ")
+      (setq ivy-display-style 'fancy))
+
+
+    (use-package swiper
+      :ensure t
+      :bind
+      (("C-s" . swiper)
+       ("C-r" . swiper)
+       ("C-c C-r" . ivy-resume)
+       ("C-x C-f" . counsel-find-file))
+      :config
+      (progn
+	(ivy-mode 1)
+	(setq ivy-use-virtual-buffers t)
+	(setq ivy-display-style 'fancy)
+	(define-key read-expression-map (kbd "C-r") 'counsel-expression-history)))
   #+END_SRC
 * ido mode
   #+BEGIN_SRC emacs-lisp
@@ -144,6 +185,13 @@
     (use-package org-evil
       :ensure t)
   #+END_SRC
+* Undo Tree
+  #+BEGIN_SRC emacs-lisp
+    (use-package undo-tree
+      :ensure t
+      :init
+      (global-undo-tree-mode))
+  #+END_SRC
 * Neotree
   A Emacs tree file navigator\\
   [[https://github.com/jaypei/emacs-neotree][neotree]]
@@ -170,6 +218,22 @@
     (use-package projectile
       :ensure t
       :config
-      (projectile-global-mode)
-      (setq projectile-completion-system 'ivy))
+      (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+      (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+      (setq projectile-indexing-method 'native)
+      (setq projectile-completion-system 'ivy)
+      (projectile-mode))
+
+    (use-package counsel-projectile
+      :ensure t
+      :config
+      (counsel-projectile-mode))
   #+END_SRC
+* Misc Packages
+** ag
+   A front-end for ag ('the_silver_searcher')\\
+   [[https://github.com/Wilfred/ag.el][ag.el]]
+   #+BEGIN_SRC emacs-lisp
+     (use-package ag
+       :ensure t)
+   #+END_SRC
